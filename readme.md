@@ -18,6 +18,12 @@ The only required dependency is gtk 3.0, under ubuntu it should be as simple as:
 sudo apt-get install libgtk-3-dev
 ````
 
+Install also icon lists:
+````bash
+sudo apt install adwaita-icon-theme-full
+sudo apt install gnome-icon-theme
+````
+
 Then the code can be compiled using the provided CMakeLists:
 
 ````bash
@@ -38,4 +44,10 @@ the GUI can then be launched from the terminal:
 
 
 <img width="500" src="docs/gui.png">
+
+## FAQ
+
+There are no errors but I cannot see the window: check if other graphical applications works, like gedit; if you are using a 2-monitor configuration, switch to a 1-monitor configuration.
+
+I want to use the application inside a linux WSL. Follow the [Microsoft indications](https://learn.microsoft.com/en-us/windows/wsl/connect-usb) for connecting USB devices with WSL. Summarizing, you need to use the [usbipd-win application](https://github.com/dorssel/usbipd-win/releases). Then you can see the USB device from within the WSL instance. The CAENHV_CTRL application can connect to the dedicated device without further coding.
 
