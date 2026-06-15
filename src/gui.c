@@ -2,6 +2,36 @@
 #include "gui.h"
 #include "caen_usb_protocol.h"
 
+// ✅ QUI le definisci davvero (senza extern)
+GtkWidget *window;
+GtkBuilder *builder;
+GtkWidget *fixed;
+
+GtkWidget *label_status;
+GtkWidget *label_command;
+GtkWidget *btn_connect;
+GtkWidget *btn_disconnect;
+GtkWidget *btn_ch1_enable;
+GtkWidget *btn_alarm_reset;
+GtkWidget *btn_refresh;
+
+GtkWidget *combo_cmd;
+GtkWidget *entry_cmd_val;
+GtkWidget *btn_send;
+
+GtkWidget *flag_buttons[16];
+
+GtkWidget *label_voltage_level;
+GtkWidget *label_current_level;
+GtkWidget *label_vset;
+GtkWidget *label_iset;
+GtkWidget *label_ramp_up;
+GtkWidget *label_ramp_down;
+GtkWidget *label_trip;
+
+GtkWidget *btn_imrange;
+GtkWidget *btn_power_down_mode;
+
 ////////////////////////////////////////////////////////////////////////////////
 
 void refresh_gui_monitor(caen_hv_state* s)
@@ -322,5 +352,16 @@ void on_btn_power_down_mode_state_set(GtkSwitch * s)
       set_power_down_mode(&state,0);
    }
 }
+
+////////////////////////////////////////////////////////////////////////////////
+
+command commands[5] =
+{
+   [SET_VSET]      = set_voltage_level,
+   [SET_ISET]      = set_maximum_current,
+   [SET_RAMP_UP]   = set_ramp_up_value,
+   [SET_RAMP_DOWN] = set_ramp_down_value,
+   [SET_TRIP]      = set_trip
+};
 
 ////////////////////////////////////////////////////////////////////////////////
