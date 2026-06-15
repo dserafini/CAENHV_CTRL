@@ -51,3 +51,5 @@ There are no errors but I cannot see the window: check if other graphical applic
 
 I want to use the application inside a linux WSL. Follow the [Microsoft indications](https://learn.microsoft.com/en-us/windows/wsl/connect-usb) for connecting USB devices with WSL. Summarizing, you need to use the [usbipd-win application](https://github.com/dorssel/usbipd-win/releases). Then you can see the USB device from within the WSL instance. The CAENHV_CTRL application can connect to the dedicated device without further coding.
 
+I want to control the HV module from a Windows PC. Use the official [caen labview control software](https://caen.it/products/labview-driver-dt547x-modules/), which works fine also for Windows 11. Unfortunately, tests confirmed that only recent DT5741 modules can be connected using this application; older ones are not compatible (I suspect that the firmware is too old).
+
