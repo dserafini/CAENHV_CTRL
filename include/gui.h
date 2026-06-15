@@ -1,44 +1,46 @@
+#ifndef GUI_H
+#define GUI_H
+
 #pragma once
 #include <gtk/gtk.h>
 
 #include "caen_dt547x_board.h"
 #include "caen_usb_protocol.h"
-#include "gui.h"
 
 // Main Windows
-GtkWidget *window;
-GtkBuilder *builder;
-GtkWidget *fixed;
+extern GtkWidget *window;
+extern GtkBuilder *builder;
+extern GtkWidget *fixed;
 
 // Board Connection dashboard
-GtkWidget *label_status;
-GtkWidget *label_command;
-GtkWidget *btn_connect;
-GtkWidget *btn_disconnect;
-GtkWidget *btn_ch1_enable;
-GtkWidget *btn_alarm_reset;
-GtkWidget *btn_refresh;
+extern GtkWidget *label_status;
+extern GtkWidget *label_command;
+extern GtkWidget *btn_connect;
+extern GtkWidget *btn_disconnect;
+extern GtkWidget *btn_ch1_enable;
+extern GtkWidget *btn_alarm_reset;
+extern GtkWidget *btn_refresh;
 
 // Command dashboard
-GtkWidget *combo_cmd;
-GtkWidget *entry_cmd_val;
-GtkWidget *btn_send;
+extern GtkWidget *combo_cmd;
+extern GtkWidget *entry_cmd_val;
+extern GtkWidget *btn_send;
 
 // Flags labels
-GtkWidget *flag_buttons[16];
+extern GtkWidget *flag_buttons[16];
 
 // Monitor Labels
-GtkWidget * label_voltage_level;
-GtkWidget * label_current_level;
-GtkWidget * label_vset;
-GtkWidget * label_iset;
-GtkWidget * label_ramp_up;
-GtkWidget * label_ramp_down;
-GtkWidget * label_trip;
+extern GtkWidget *label_voltage_level;
+extern GtkWidget *label_current_level;
+extern GtkWidget *label_vset;
+extern GtkWidget *label_iset;
+extern GtkWidget *label_ramp_up;
+extern GtkWidget *label_ramp_down;
+extern GtkWidget *label_trip;
 
 // Mode switches
-GtkWidget * btn_imrange;
-GtkWidget * btn_power_down_mode;
+extern GtkWidget *btn_imrange;
+extern GtkWidget *btn_power_down_mode;
 
 // Helper Functions
 void refresh_gui_monitor(caen_hv_state* s);
@@ -61,11 +63,6 @@ typedef void (*command)(caen_hv_state*, float);
 
 enum gtk_set_cmd{SET_VSET,SET_ISET,SET_RAMP_UP,SET_RAMP_DOWN,SET_TRIP};
 
-static command commands[5] =
-{
-   [SET_VSET]      = set_voltage_level,
-   [SET_ISET]      = set_maximum_current,
-   [SET_RAMP_UP]   = set_ramp_up_value,
-   [SET_RAMP_DOWN] = set_ramp_down_value,
-   [SET_TRIP]      = set_trip
-};
+extern command commands[5];
+
+#endif
